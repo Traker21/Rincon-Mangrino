@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios'
 import '../css/Visual.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import Cookies from 'universal-cookie';
 
-
+const cookies = new Cookies();
 
 const baseUrl="https://localhost:44324/user/login"
 
@@ -20,21 +21,34 @@ const { register, handleSubmit} = useForm (form)
 
 
 
-
   const iniciarSesion = async (data) => {
   await axios.post(baseUrl,data)
 
+  
   .then(response => {
   
     console.log(response.data)
       if(response.data.isLoged){
-        alert('bienvenido')
+
+      cookies.set('id', response.id, {path:"/"})
+      cookies.set('Username', response.Username, {path:"/"})
+      cookies.set('Pass', response.Pass, {path:"/"})
+      cookies.set('Creation_Date', response.Creation_Date, {path:"/"})
+      cookies.set('RolId', response.RolId, {path:"/"})
+        window.location.href="./menu"
+        
         
     }
 
-      
+      else {
         alert('Usuario o contraseña no validos')
+      }
+        
       
+  })
+
+  .catch(error => {
+    console.log(error);
   })
 
   
