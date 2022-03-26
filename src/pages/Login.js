@@ -4,6 +4,9 @@ import axios from 'axios'
 import '../css/Visual.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Cookies from 'universal-cookie';
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+
 
 const cookies = new Cookies();
 
@@ -11,6 +14,11 @@ const baseUrl="https://localhost:44324/user/login"
 
 
 const Login = () => {
+
+const Navegador = useNavigate();
+
+const dispatch = useDispatch();
+
 
 const form = {
     username: '',
@@ -30,12 +38,14 @@ const { register, handleSubmit} = useForm (form)
     console.log(response.data)
       if(response.data.isLoged){
 
+        dispatch({type:"VERIFICACION"})
+
       cookies.set('id', response.id, {path:"/"})
       cookies.set('Username', response.Username, {path:"/"})
       cookies.set('Pass', response.Pass, {path:"/"})
       cookies.set('Creation_Date', response.Creation_Date, {path:"/"})
       cookies.set('RolId', response.RolId, {path:"/"})
-        window.location.href="./menu"
+        Navegador("/Menu")
         
         
     }
@@ -55,7 +65,7 @@ const { register, handleSubmit} = useForm (form)
   }
 
   const Registrarse = () => {
-    alert('Esta funcion tadavia no esta inplementada')
+    window.location.href='./Registrar'
   }
 
 
@@ -65,7 +75,7 @@ const { register, handleSubmit} = useForm (form)
       
       <br/>
 
-      <div class="w-100 p-3">
+      <div >
                <img src='https://sonidomusicalrddotcom.files.wordpress.com/2009/11/money.jpg'/>
       </div>
       <div className="containerPrincipal">
@@ -101,7 +111,7 @@ const { register, handleSubmit} = useForm (form)
                 <button className='btn btn-primary' type= "submit">Iniciar Sesion</button>
                 <br/>
                 <br/>
-                <button onClick={() => Registrarse()} className='btn btn-primary'>Registrarse</button>
+                <button onClick={() => Registrarse()} className='btn btn-Primary'>Registrarse</button>
             </form>
         </div>
           

@@ -1,5 +1,9 @@
 import React from 'react'
 import Cookies from 'universal-cookie'
+import axios from 'axios'
+
+
+const baseUrl="https://localhost:44324/user/login"
 
 
 const cookies = new Cookies();
@@ -18,6 +22,7 @@ const CerrarSesion = () => {
 
 
   return (
+
 
     console.log(cookies.get('id'+cookies.get('id'))),
     console.log(cookies.get('Username'+cookies.get('Username'))),

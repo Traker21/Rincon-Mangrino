@@ -20,3 +20,46 @@
     background-color: bisque;
 }
 
+
+.RegisterPrincipal {
+  background-color: #5ad8bd;
+  position: absolute;
+  padding: 105px;
+  align-items: center;
+  
+}
+
+.RegisterSecundario {
+  
+  text-align: center;
+  
+}
+
+.omega {
+  position: relative;
+  width: 50%;
+  
+}
+
+
+.principal-register {
+  align-items: center;
+  width: 100%;
+}
+
+
+.boxy {
+  
+    position: absolute;
+      left: 75%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 50%;
+      height: 100%;
+      border: 1px solid #2fd8b3;
+      padding: 40px;
+      
+      background-color: #2fd8b3;
+
+
+}
